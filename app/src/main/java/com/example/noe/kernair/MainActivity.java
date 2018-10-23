@@ -12,14 +12,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        int aqi = 51;     // Hard coded for now to test
-        AQIDisplay(aqi);
 
         // Attempts to launch the Kern Air Project twitter
         Button twitterBtn = findViewById(R.id.twitterBtn);
@@ -52,6 +48,14 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int aqi = 51;
+        AQIDisplay(aqi);
     }
 
     /**
