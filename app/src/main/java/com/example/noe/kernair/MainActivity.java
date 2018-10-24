@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        int aqi = 51;
+        int aqi = 200;
         AQIDisplay(aqi);
     }
 
