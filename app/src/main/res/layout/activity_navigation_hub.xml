@@ -17,7 +17,7 @@
         android:layout="@color/colorPrimaryDark" />
 
     <Button
-        android:id="@+id/toMainHubButton"
+        android:id="@+id/toMainHubBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

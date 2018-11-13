@@ -50,6 +50,13 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         });
+        Button NavHubBtn = (Button)findViewById(R.id.toMainHubBtn);
+        NavHubBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NavHub.class));
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
