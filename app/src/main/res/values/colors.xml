@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- General colors -->
     <color name="colorPrimary"> #5dade2 </color>
     <color name="colorPrimaryDark"> #1b4f72  </color>
     <color name="colorAccent"> #424949</color>
     <color name="textColor">#ffffff</color>
     <color name="textBackground"> #A6fdf2e9 </color>
     <color name="transparent">#005dade2</color>
+
+    <!-- AQI colors -->
+    <!-- All colors have an 88% opacity -->
+    <color name="good">#e07FA94C</color>
+    <color name="moderate">#e0FFFF00</color>
+    <color name="unhealthyForSensitive">#e0FF9900</color>
+    <color name="unhealthy">#e0FF3333</color>
+    <color name="veryUnhealthy">#e0572D57</color>
+    <color name="hazardous">#e0800000</color>
 </resources>
