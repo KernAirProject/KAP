@@ -1,15 +1,5 @@
 <resources>
-    <string name="app_name">KernAir</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_info">Important Info</string>
-    <string name="place_holder">
-        "Past Notification:\n"
-        "Notification info\n"
-        "More notification info\n"
-
-    </string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="app_name">KernAirProject</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email / Username</string>
@@ -20,17 +10,16 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="place_holder">Past notification: \n
+                                Notification info \n
+                                More Notification info. </string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
 
     <!-- Strings related to Main Activity -->
-    <string name="branding">Kern Air</string>
-    <string name="map_info">Map info</string>
-    <string name="resources_info">Resource info</string>
-    <string name="settings_info">settings info</string>
-    <string name="title_activity_settings">Settings</string>
-
+    <string name="branding">Kern Air Project</string>
+    <string name="city">Bakersfield, California</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
