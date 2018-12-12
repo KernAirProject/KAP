@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <!-- Navigation bar -->
+    <RelativeLayout
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark">
+
+        <Button
+            android:id="@+id/toMainHubBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Main Hub"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="148dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/kap_logo_small"
+            tools:ignore="NotSibling" />
+    </RelativeLayout>
+
+    <!-- Settings Menu -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/navBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Language Settings -->
+            <RelativeLayout
+                android:id="@+id/languageSettings"
+                android:layout_width="match_parent"
+                android:layout_height="150sp"
+                android:layout_margin="25sp"
+                android:background="@color/textBackground">
+
+                <TextView
+                    android:id="@+id/lngTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Language: "
+                    android:textSize="23sp"/>
+                <TextView
+                    android:id="@+id/engTxt"
+                    android:layout_width="75sp"
+                    android:layout_height="25sp"
+                    android:layout_below="@+id/lngTxt"
+                    android:layout_marginTop="40sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginLeft="10sp"
+                    android:text="English:"
+                    android:textSize="20sp"/>
+
+                <CheckBox
+                    android:id="@+id/engCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_alignBottom="@+id/engTxt"
+                    android:layout_toRightOf="@+id/engTxt"
+                    android:layout_toEndOf="@+id/engTxt" />
+
+                <TextView
+                    android:id="@+id/spanTxt"
+                    android:layout_width="75sp"
+                    android:layout_height="25sp"
+                    android:layout_toRightOf="@+id/engCheckBox"
+                    android:layout_toEndOf="@+id/engCheckBox"
+                    android:layout_alignBottom="@+id/engCheckBox"
+                    android:text="Spanish:"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginLeft="10sp"/>
+
+                <CheckBox
+                    android:id="@+id/spanCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_alignBottom="@+id/spanTxt"
+                    android:layout_toRightOf="@+id/spanTxt"
+                    android:layout_toEndOf="@+id/spanTxt"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
