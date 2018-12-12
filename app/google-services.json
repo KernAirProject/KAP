@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "959644216714",
+    "firebase_url": "https://kernairtest01.firebaseio.com",
+    "project_id": "kernairtest01",
+    "storage_bucket": "kernairtest01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959644216714:android:dd91aa624c5a86ac",
+        "android_client_info": {
+          "package_name": "com.example.noe.kernair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959644216714-fm312be444lenj8ml341mdko59ju7jor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVOmciRT6Bvb9M7oQq9HV0jYq2ByPNc0U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
