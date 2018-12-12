@@ -18,8 +18,8 @@ public class NavHub extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_hub);
 
-        Button MainHubBtn = (Button) findViewById(R.id.toMainHubBtn);
-        MainHubBtn.setOnClickListener(new View.OnClickListener() {
+        Button toHomePageBtn = (Button) findViewById(R.id.toHomePageBtn);
+        toHomePageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NavHub.this, MainActivity.class));
