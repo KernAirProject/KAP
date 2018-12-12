@@ -1,10 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_page_small"
-    android:orientation="vertical"
-    android:visibility="visible"
-    android:id="@+id/relativeLayout2">
+    android:background="@drawable/background">
 
-</android.support.constraint.ConstraintLayout>
+    <!-- Navigation bar -->
+    <RelativeLayout
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark">
+
+        <Button
+            android:id="@+id/toMainHubBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="To Main Hub"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="148dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/kap_logo_small"
+            tools:ignore="NotSibling" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@+id/AQITxtView"
+        android:layout_below="@+id/navBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-125dp"
+        android:layout_alignParentLeft="true"
+        android:text="\nBakersfield, CA"
+        android:textSize="25sp"
+        android:textColor="#000000"/>
+
+    <!-- AQI value display -->
+    <!-- Color changing background -->
+    <TextView
+        android:id="@+id/AQITxtView"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="123dp"
+        android:text="AQI\n51"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="50sp" />
+
+    <!-- Past notification view -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/AQITxtView"
+        android:layout_above="@+id/socialMediaBar"
+        android:layout_marginTop="2dp"
+        tools:ignore="RtlCompat">
+
+        <!-- List of notifications -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <!-- 5 textViews to test ScrollView -->
+            <TextView
+                android:id="@+id/past_notification1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/place_holder"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingBottom="10dp"/>
+            <TextView
+                android:id="@+id/past_notification2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/place_holder"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingBottom="10dp"/>
+            <TextView
+                android:id="@+id/past_notification3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/place_holder"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingBottom="10dp"/>
+            <TextView
+                android:id="@+id/past_notification4"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/place_holder"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingBottom="10dp"/>
+            <TextView
+                android:id="@+id/past_notification5"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/place_holder"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingBottom="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/socialMediaBar"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:orientation="horizontal">
+
+        <!-- Twitter button -->
+        <Button
+            android:id="@+id/twitterBtn"
+            android:layout_width="60dp"
+            android:layout_height="62dp"
+            android:background="@drawable/twitter_logo" />
+
+        <!-- Facebook button -->
+        <Button
+            android:id="@+id/facebookBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/facebook_logo"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
