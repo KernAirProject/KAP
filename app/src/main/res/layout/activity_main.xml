@@ -57,7 +57,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="123dp"
-        android:text="AQI\n51"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="50sp" />
