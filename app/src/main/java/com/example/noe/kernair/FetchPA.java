@@ -1,5 +1,6 @@
 package com.example.noe.kernair;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -10,53 +11,111 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FetchPA extends AsyncTask<URL, Void, Void> {
+public class FetchPA extends AsyncTask<Void, Void, Void> {
+
+    private static final String TAG = "FetchPA";
+
+    public byte[] getURLBytes(String urlSpec) throws IOException {
+        URL url = new URL("https://www.purpleair.com/json");
+        HttpURLConnection pAConnection = (HttpURLConnection) url.openConnection();
+
+        try{
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            InputStream in = pAConnection.getInputStream();
+
+            if(pAConnection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                throw new IOException(pAConnection.getResponseMessage() + ": with " + urlSpec);
+            }
+
+            int bytesRead = 0;
+            byte[] buffer = new byte[1024];
+            while((bytesRead = in.read(buffer)) > 0) {
+                out.write(buffer, 0 , bytesRead);
+            }
+            out.close();
+            return out.toByteArray();
+        }finally {
+            pAConnection.disconnect();
+        }
+    }
+
+    public String getUrlString(String urlSpec) throws IOException {
+        return new String(getURLBytes(urlSpec));
+    }
+
+    public List<PurpleAirSensor> fetchItems() {
+
+        List<PurpleAirSensor> sensorItems = new ArrayList<>();
+
+        try {
+            String url = Uri.parse("https://www.purpleair.com/json")
+                    .buildUpon()
+                    .appendQueryParameter("format", "json")
+                    .appendQueryParameter("nojsoncallback", "1")
+                    .appendQueryParameter("extras", "url_s")
+                    .build().toString();
+            String jsonString = getUrlString(url);
+            Log.i(TAG, "Received JSON: " + jsonString);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseItems(sensorItems, jsonBody);
+        } catch (IOException ioe) {
+            Log.e( TAG, "Failed to fetch items", ioe);
+        } catch (JSONException je) {
+            Log.e(TAG, "Failed to parse JSON", je);
+        }
+        return sensorItems;
+    }
+
+    private void parseItems(List<PurpleAirSensor> items, JSONObject jsonBody)
+            throws IOException, JSONException {
+
+        JSONArray sensorJsonArray = jsonBody.getJSONArray("results");
+        for(int i = 0; i < sensorJsonArray.length(); i++){
+            JSONObject sensorObject = sensorJsonArray.getJSONObject(i);
+
+            PurpleAirSensor sensorItem = new PurpleAirSensor();
+            sensorItem.setmId("ID");
+            sensorItem.setmParentId("ParentID");
+            sensorItem.setMthingspeakPrimaryId("THINGSPEAK_PRIMARY_ID");
+            sensorItem.setMthingspeakPrimaryIdReadKey("THINGSPEAK_PRIMARY_ID_READ_KEY");
+            sensorItem.setmLable("Label");  // The Name of the sensor
+            sensorItem.setmLat("Lat");      // The latitude of the sensor
+            sensorItem.setmLon("Lon");      // The Longitude of the sensor
+            sensorItem.setmPM2_5Value("PM2_5Value");
+            sensorItem.setmType("Type");
+            sensorItem.setmHidden("Hidden");
+            sensorItem.setmFlag("Flag");
+            sensorItem.setmTempF("temp_f");
+            sensorItem.setmHumidit("humidity");
+            sensorItem.setmPressure("pressure");
+            sensorItem.setMthingspeakSecondaryId("THINGSPEAK_SECONDARY_ID");
+            sensorItem.setMthingspeakSecondaryIdReadKey("THINGSPEAK_SECONDARY_ID_READ_KEY");
+            sensorItem.setmStats("Stats");
+
+            if(!sensorObject.has("url_s")) {
+                continue;
+            }
+
+            items.add(sensorItem);
+
+        }
+    }
 
 
-    // Using this YouTube link: https://www.youtube.com/watch?v=Vcn4OuV4Ixg
-
-    String pAData;  //The raw data from the Purple Air JSON
-    JSONObject JO;
-    JSONArray JA;
 
     @Override
-    protected Void doInBackground(URL... URL) {
-        try {
-            URL purpleAirUrl = new URL("https://www.purpleair.com/json");
-            try {
-                HttpURLConnection purpleAirUrlConnection = (HttpURLConnection) purpleAirUrl.openConnection();
-                InputStream inputStream = purpleAirUrlConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                String purpleAirStr = "";
-                while((purpleAirStr = bufferedReader.readLine()) != null){
-                    purpleAirStr = bufferedReader.readLine();
-                    pAData = pAData + purpleAirStr;
-                }
-                
-                JA = new JSONArray(pAData);
-                JO = new JSONObject(pAData);
-                /**
-                for(int i = 0; i < JA.length(); i++){
-                    JO = (JSONObject) JA.get(i);
-                }
-                 */
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
+    protected Void doInBackground(Void... Void) {
+        new FetchPA().fetchItems();
         return null;
     }
 
@@ -64,11 +123,8 @@ public class FetchPA extends AsyncTask<URL, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        try {
-            MainActivity.AQITxtView.setText(JO.getInt("ID"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        
+
     }
 
     /**
