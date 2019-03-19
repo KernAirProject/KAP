@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "959644216714-m3410d8sug86vst9pivv04e64kgl7l6s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.noe.kernair",
+            "certificate_hash": "fff6cf231bf05af20dc07e63f62ca60e075a3f20"
+          }
+        },
+        {
           "client_id": "959644216714-fm312be444lenj8ml341mdko59ju7jor.apps.googleusercontent.com",
           "client_type": 3
         }
